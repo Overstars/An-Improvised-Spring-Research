@@ -1,0 +1,4 @@
+*.xml eol=lf
+*.sql eol=lf
+*.java eol=lf
+*.properties eol=lf
