@@ -1,6 +1,5 @@
 package com.straycat.action;
 
-import com.straycat.service.HelloService;
 import com.straycat.service.baidu.TransService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
