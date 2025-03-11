@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2f5fd6ef-6bc5-4952-9b1c-501aaa77fc91" name="Changes" comment="[add]添加MD5Util">
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/muwpob-research.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/java/com/straycat/MuwpobResearchApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/straycat/SpringResearchApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/java/com/straycat/action/HelloAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/straycat/action/HelloAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/java/com/straycat/action/TranslateAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/straycat/action/TranslateAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/java/com/straycat/config/LevelDBConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/straycat/config/LevelDBConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/java/com/straycat/controller/ImageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/straycat/controller/ImageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/java/com/straycat/data/ImageMeta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/straycat/data/ImageMeta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/java/com/straycat/filter/FilterConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/straycat/filter/FilterConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/java/com/straycat/filter/LogFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/straycat/filter/LogFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/java/com/straycat/interceptor/ContextParmInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/straycat/interceptor/ContextParmInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/java/com/straycat/interceptor/InterceptorConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/straycat/interceptor/InterceptorConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/java/com/straycat/service/HelloService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/straycat/service/HelloService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/java/com/straycat/service/baidu/TransService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/straycat/service/baidu/TransService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/java/com/straycat/utils/AlgorithmUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/straycat/utils/AlgorithmUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/java/com/straycat/utils/DBUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/straycat/utils/DBUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/java/com/straycat/utils/DateTimeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/straycat/utils/DateTimeUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/java/com/straycat/utils/HttpUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/straycat/utils/HttpUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/java/com/straycat/utils/JSONUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/straycat/utils/JSONUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/java/com/straycat/utils/LevelDBUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/straycat/utils/LevelDBUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/java/com/straycat/utils/MD5Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/straycat/utils/MD5Util.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/java/com/straycat/utils/ParmApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/straycat/utils/ParmApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/java/com/straycat/utils/TraceNoGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/straycat/utils/TraceNoGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/resources/config/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/resources/fault.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fault.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/resources/mapper/trace_message-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/trace_message-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/resources/mapper/user-mapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/user-mapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/resources/sql/straycat_ddl/DDL_CREATE_DATEBASE_STRAYCAT.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/straycat_ddl/DDL_CREATE_DATEBASE_STRAYCAT.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/resources/sql/straycat_ddl/DDL_STRAYCAT_USER_INFO.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/straycat_ddl/DDL_STRAYCAT_USER_INFO.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/resources/sql/straycat_ddl/DDL_TRACE_MESSAGE.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/straycat_ddl/DDL_TRACE_MESSAGE.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/main/resources/sql/straycat_ddl/DDL_TRANCODE_INFO.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/straycat_ddl/DDL_TRANCODE_INFO.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../muwpob-research/src/test/java/com/straycat/muwpobresearch/MuwpobResearchApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/straycat/springresearch/SpringResearchApplicationTests.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="spring-research" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="spring-research" type="f1a62948:ProjectNode" />
+                <item name="运行配置" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="spring-beans.schema" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MigrationScriptOptions">
+    <option name="ignoreImplicitObjects" value="true" />
+    <option name="ignoreSourceCode" value="false" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2RFdhZ6DfSQY7me4KEBXxsdTmiG" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Gradle.muwpob-research [copyResources].executor": "Run",
+    "Gradle.构建 muwpob-research.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "Spring Boot.MuwpobResearchApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "E:/GitProps/An-Improvised-Spring-Research/spring-research",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDK",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.33793104",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "spring.configuration.checksum": "6923f175b583b55cff9bd321389201ce",
+    "vue.rearranger.settings.migration": "true",
+    "数据库脚本.DDL_STRAYCAT_USER_INFO.sql.executor": "Run",
+    "数据库脚本.DDL_TRACE_MESSAGE.sql.executor": "Run"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ],
+    "RunConfigurationTargetLRU": [
+      "997e8dbf-85b6-4ebf-a133-ab78be3c30fa/database/\"postgres\"",
+      "997e8dbf-85b6-4ebf-a133-ab78be3c30fa/database/\"straycat\""
+    ],
+    "com.intellij.ide.scratch.LRUPopupBuilder$1/SQL 方言": [
+      "PostgreSQL"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\GitProps\An-Improvised-Spring-Research\muwpob-research\src\main\resources\mapper" />
+      <recent name="E:\GitProps\An-Improvised-Spring-Research\muwpob-research\src\main\resources\sql\straycat_ddl" />
+      <recent name="E:\GitProps\An-Improvised-Spring-Research\muwpob-research\src\main\java\com\config" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\GitProps\An-Improvised-Spring-Research\muwpob-research\src\main\java\com\config" />
+      <recent name="E:\GitProps\MUWPOB-Spring-Research\muwpob-research\src\main\resources\properties" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.SpringResearchApplication">
+    <configuration name="LevelDBUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.straycat.utils.LevelDBUtils" />
+      <module name="muwpob-research.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.straycat.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DDL_CREATE_DATEBASE_STRAYCAT.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/src/main/resources/sql/straycat_ddl/DDL_CREATE_DATEBASE_STRAYCAT.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="997e8dbf-85b6-4ebf-a133-ab78be3c30fa" namespace="database/&quot;postgres&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="DDL_STRAYCAT_USER_INFO.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/src/main/resources/sql/straycat_ddl/DDL_STRAYCAT_USER_INFO.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="997e8dbf-85b6-4ebf-a133-ab78be3c30fa" namespace="database/&quot;straycat&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="DDL_TRACE_MESSAGE.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
+      <script-file value="$PROJECT_DIR$/src/main/resources/sql/straycat_ddl/DDL_TRACE_MESSAGE.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="997e8dbf-85b6-4ebf-a133-ab78be3c30fa" namespace="database/&quot;straycat&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="spring-research [copyResources]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="copyResources" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <ForceTestExec>false</ForceTestExec>
+      <method v="2" />
+    </configuration>
+    <configuration name="SpringResearchApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <envs>
+        <env name="-Denv" value="dev" />
+      </envs>
+      <module name="spring-research.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.straycat.SpringResearchApplication" />
+      <option name="VM_PARAMETERS" value="-Dspring.profiles.active=main -Dserver.port=9003 -verbose:gc -Xlog:gc* -XX:+HeapDumpOnOutOfMemoryError" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="Gradle.BeforeRunTask" enabled="true" tasks="copyResources" externalProjectPath="$PROJECT_DIR$" vmOptions="" scriptParameters="" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Gradle.spring-research [copyResources]" />
+      <item itemvalue="Spring Boot.SpringResearchApplication" />
+      <item itemvalue="应用程序.LevelDBUtils" />
+      <item itemvalue="数据库脚本.DDL_CREATE_DATEBASE_STRAYCAT.sql" />
+      <item itemvalue="数据库脚本.DDL_STRAYCAT_USER_INFO.sql" />
+      <item itemvalue="数据库脚本.DDL_TRACE_MESSAGE.sql" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.spring-research [copyResources]" />
+        <item itemvalue="应用程序.LevelDBUtils" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-11.0.21-corretto-11.0.21-3183f394aec4-d55de845" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2f5fd6ef-6bc5-4952-9b1c-501aaa77fc91" name="Changes" comment="" />
+      <created>1686849884500</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1686849884500</updated>
+      <workItem from="1686849885505" duration="1402000" />
+      <workItem from="1686851316305" duration="1153000" />
+      <workItem from="1686852647675" duration="151000" />
+      <workItem from="1686936488830" duration="159000" />
+      <workItem from="1686972631144" duration="8539000" />
+      <workItem from="1687069126675" duration="1338000" />
+      <workItem from="1687188564934" duration="735000" />
+      <workItem from="1687400902646" duration="2676000" />
+      <workItem from="1687403588906" duration="3159000" />
+      <workItem from="1688837508503" duration="875000" />
+      <workItem from="1688992418527" duration="608000" />
+      <workItem from="1690140015705" duration="5058000" />
+      <workItem from="1690217573920" duration="625000" />
+      <workItem from="1690291180258" duration="226000" />
+      <workItem from="1690291413013" duration="7372000" />
+      <workItem from="1690372156787" duration="57000" />
+      <workItem from="1690372323682" duration="1256000" />
+      <workItem from="1690471381477" duration="659000" />
+      <workItem from="1690488020849" duration="6000" />
+      <workItem from="1690489783734" duration="1216000" />
+      <workItem from="1690724764420" duration="6040000" />
+      <workItem from="1690730814702" duration="3592000" />
+      <workItem from="1692445787801" duration="623000" />
+      <workItem from="1692448204154" duration="81000" />
+      <workItem from="1692452200163" duration="644000" />
+      <workItem from="1699532756810" duration="1946000" />
+      <workItem from="1699535422422" duration="303000" />
+      <workItem from="1699545539229" duration="4904000" />
+      <workItem from="1701358520254" duration="71000" />
+      <workItem from="1701358731792" duration="6934000" />
+      <workItem from="1701365684080" duration="1091000" />
+      <workItem from="1701579637725" duration="1427000" />
+      <workItem from="1701874720555" duration="360000" />
+      <workItem from="1701876039643" duration="5964000" />
+      <workItem from="1701964976261" duration="189000" />
+      <workItem from="1701965223789" duration="4477000" />
+      <workItem from="1702827477336" duration="623000" />
+      <workItem from="1705420184016" duration="342000" />
+      <workItem from="1716116809031" duration="209000" />
+      <workItem from="1716117024987" duration="88000" />
+      <workItem from="1716117119302" duration="424000" />
+      <workItem from="1716117560756" duration="1183000" />
+      <workItem from="1733147086519" duration="612000" />
+      <workItem from="1734351497707" duration="671000" />
+      <workItem from="1739280157537" duration="2152000" />
+      <workItem from="1739373491581" duration="2908000" />
+      <workItem from="1739377403942" duration="2077000" />
+      <workItem from="1741713036955" duration="43000" />
+      <workItem from="1741713094539" duration="33000" />
+      <workItem from="1741713219180" duration="200000" />
+      <workItem from="1741713503696" duration="391000" />
+      <workItem from="1741713910623" duration="933000" />
+      <workItem from="1741714854249" duration="627000" />
+    </task>
+    <task id="LOCAL-00001" summary="[init]项目初始化">
+      <created>1686852388181</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1686852388181</updated>
+    </task>
+    <task id="LOCAL-00002" summary="[update]不知道在干嘛">
+      <created>1686989912142</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1686989912142</updated>
+    </task>
+    <task id="LOCAL-00003" summary="[add]过滤器和拦截器">
+      <created>1687406585221</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1687406585221</updated>
+    </task>
+    <task id="LOCAL-00004" summary="[add]添加MD5Util">
+      <created>1690147088786</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1690147088786</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="[init]项目初始化" />
+    <MESSAGE value="[update]不知道在干嘛" />
+    <MESSAGE value="[add]过滤器和拦截器" />
+    <MESSAGE value="[add]MD5Util" />
+    <MESSAGE value="[add]添加MD5Util" />
+    <option name="LAST_COMMIT_MESSAGE" value="[add]添加MD5Util" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/straycat/controller/ImageController.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/straycat/controller/ImageController.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/straycat/controller/ImageController.java</url>
+          <line>76</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/straycat/controller/ImageController.java</url>
+          <line>75</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/straycat/controller/ImageController.java</url>
+          <line>74</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/straycat/controller/ImageController.java</url>
+          <line>83</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/straycat/controller/ImageController.java</url>
+          <line>86</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/straycat/controller/ImageController.java</url>
+          <line>88</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/straycat/controller/ImageController.java</url>
+          <line>87</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/straycat/controller/ImageController.java</url>
+          <line>90</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/straycat/controller/ImageController.java</url>
+          <line>89</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/straycat/controller/ImageController.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/straycat/controller/ImageController.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/straycat/controller/ImageController.java</url>
+          <line>98</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/straycat/controller/ImageController.java</url>
+          <line>101</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/straycat/controller/ImageController.java</url>
+          <line>102</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace要绑定一个对应的Dao/Mapper接口-->
+<mapper namespace="com.example.demo">
+
+    <!--查询语句-->
+    <!--id对应的namespace中的方法名，resultType是Sql语句执行的返回值-->
+    <!--查询所用用户-->
+    <select id="getUserList" resultType="com.example.demo.User">
+        select *
+        from idea.user
+    </select>
+
+</mapper>
