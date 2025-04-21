@@ -38,3 +38,5 @@ out/
 /image-db/
 /uploaded-images/
 /gradle/
+/visitLog-db/
+/levelDbData/
