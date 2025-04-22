@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.ContentCachingRequestWrapper;
 
 import javax.naming.Context;
 import javax.naming.NamingException;
@@ -13,18 +14,40 @@ import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ContextParmInterceptor implements HandlerInterceptor {
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        HandlerMethod handlerMethod = (HandlerMethod) handler;
-        Method method = handlerMethod.getMethod();
-        String methodName = method.getName();
-        logger.info("====拦截到了方法：{}，在该方法执行之前执行====", methodName);
         LocalDate date = LocalDate.now(); // get the current date
         String traceNo = "10000" + date.format(DateTimeFormatter.BASIC_ISO_DATE);
+
+        if (!(handler instanceof HandlerMethod)) {
+            return true; // 非Controller方法直接放行
+        }
+
+
+        // 包装请求以支持重复读取
+        ContentCachingRequestWrapper wrappedRequest = new ContentCachingRequestWrapper(request);
+        // 打印请求基本信息
+        HandlerMethod handlerMethod = (HandlerMethod) handler;
+        Method method = handlerMethod.getMethod();
+        logger.info("[{}] ==== 拦截方法: {}.{} ====",
+                traceNo, method.getDeclaringClass().getSimpleName(), method.getName());
+        logger.info("[{}] Request URL: {} {}",
+                traceNo, wrappedRequest.getMethod(), wrappedRequest.getRequestURL());
+        // 打印请求头
+        Map<String, String> headers = new HashMap<>();
+        Enumeration<String> headerNames = wrappedRequest.getHeaderNames();
+        while (headerNames.hasMoreElements()) {
+            String headerName = headerNames.nextElement();
+            headers.put(headerName, wrappedRequest.getHeader(headerName));
+        }
+        logger.debug("[{}] Headers: {}", traceNo, headers);
         logger.info("====交易流水：{}====", traceNo);
         // 返回true才会继续执行，返回false则取消当前请求
         return true;
