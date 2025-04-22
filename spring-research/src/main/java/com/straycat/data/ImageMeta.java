@@ -1,5 +1,7 @@
 package com.straycat.data;
 
+import lombok.Data;
+
 import java.time.LocalDateTime;
 /**
  * @projectName: spring-research
@@ -10,6 +12,7 @@ import java.time.LocalDateTime;
  * @date: 2025/2/12 15:05
  * @version: 1.0
  */
+@Data
 public class ImageMeta {
     private String id;          // 图片唯一ID（如UUID）
     private String filename;    // 原始文件名

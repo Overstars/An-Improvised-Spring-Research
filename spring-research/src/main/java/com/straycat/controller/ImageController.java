@@ -40,6 +40,12 @@ public class ImageController {
     @Value("${image.storage.path}")
     private String imageStoragePath;
 
+    @Value("${network.domain}")
+    private String networkDomain;
+
+    @Value("${network.port}")
+    private String networkPort;
+
     @Autowired
     public ImageController(DB levelDB) {
         this.levelDB = levelDB;
@@ -99,7 +105,7 @@ public class ImageController {
         levelDB.put(bytes(fileId), metaBytes);
 
         // 返回访问URL
-        String imageUrl = "http://localhost:8081/images/" + storedFilename;
+        String imageUrl = "http://" + networkDomain + ":" + networkPort +"/images/" + storedFilename;
         return ResponseEntity.ok(imageUrl);
     }
 

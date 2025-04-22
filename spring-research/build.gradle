@@ -2,6 +2,8 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '2.7.12'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    // 添加Lombok插件
+    id 'io.freefair.lombok' version '8.6'
 }
 
 group = 'com.straycat'
@@ -21,6 +23,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.2'
     implementation 'org.iq80.leveldb:leveldb:0.12'
+    // Lombok依赖
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.postgresql:postgresql'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
