@@ -1,6 +1,6 @@
 
 ## 项目说明
-
+本仓库commit message采用[gitmoji](https://gitmoji.dev/)进行记录。
 
 ## 使用说明
 打包：执行Gradle bootJar任务，便会在build/libs/下生成jar包
