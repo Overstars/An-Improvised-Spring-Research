@@ -1,5 +1,6 @@
 package com.straycat.interceptor;
 
+import com.straycat.utils.TraceNoGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpMethod;
@@ -27,12 +28,14 @@ public class ContextParmInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         LocalDate date = LocalDate.now(); // get the current date
-        String traceNo = "10000" + date.format(DateTimeFormatter.BASIC_ISO_DATE);
+        TraceNoGenerator idGenerator = new TraceNoGenerator(0, 0);
+        String traceNo = String.valueOf(idGenerator.generateUniqueId());
 
         if (!(handler instanceof HandlerMethod)) {
             return true; // 非Controller方法直接放行
         }
-
+        // 将traceNo放入请求属性中，以便后续使用
+        request.setAttribute("traceNo", traceNo);
 
         // 包装请求以支持重复读取
         ContentCachingRequestWrapper wrappedRequest = new ContentCachingRequestWrapper(request);

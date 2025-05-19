@@ -34,11 +34,15 @@ public class LogController {
      * @date: 2025/4/22 1:09
      */
     @PostMapping("/logs/visit")
-    public ResponseEntity<?> logVisit(@RequestParam MultiValueMap<String, String> params) {
+    public ResponseEntity<?> logVisit (
+        @RequestAttribute("traceNo") String traceNo,  // 直接获取属性值
+        @RequestParam MultiValueMap<String, String> params
+    ) {
         VisitLog log = new VisitLog();
-        log.setId(UUID.randomUUID().toString());
+        logger.info("RequestParam params = {}", params);
+//        log.setId(UUID.randomUUID().toString());
+        log.setId(traceNo);
         log.setIp(getClientIp(request));
-        log.setTimestamp(System.currentTimeMillis());
         log.setUrl(params.getFirst("url"));
         log.setReferrer(params.getFirst("referrer"));
         log.setUa(params.getFirst("ua"));
@@ -46,11 +50,7 @@ public class LogController {
         log.setLang(params.getFirst("lang"));
 
         logger.info("VisitLog : {}", log);
-        try {
-            storage.storeLog(log);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
+        storage.storeLog(log);
         return ResponseEntity.ok().build();
     }
     /**

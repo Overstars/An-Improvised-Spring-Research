@@ -2,3 +2,4 @@
 *.exe
 /.idea
 spring-research/leveldb-demo
+levelDbData

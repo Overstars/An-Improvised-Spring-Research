@@ -3,7 +3,10 @@
 本仓库commit message采用[gitmoji](https://gitmoji.dev/)进行记录。
 
 ## 使用说明
-打包：执行Gradle bootJar任务，便会在build/libs/下生成jar包
+打包：
+1. 进入spring-research目录下
+2. 打开终端
+3. 执行Gradle bootJar任务，便会在build/libs/下生成jar包
 ```shell
 ./gradlew clean bootJar --info
 ```
@@ -12,7 +15,7 @@
 部署运行
 ```shell
 nohup java -jar spring-research-0.0.1-SNAPSHOT.jar \
--Dspring.profiles.active=main \
+-Dspring.profiles.active=prd \
 -Dserver.port=9003 \
 -Dfile.encoding=UTF-8 \
 -verbose:gc \

@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Main" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <option name="ALTERNATIVE_JRE_PATH" value="11" />
+    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+    <module name="spring-research.main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.straycat.SpringResearchApplication" />
+    <option name="VM_PARAMETERS" value="-Dspring.profiles.active=dev -Dserver.port=9003 -verbose:gc  -XX:+HeapDumpOnOutOfMemoryError" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

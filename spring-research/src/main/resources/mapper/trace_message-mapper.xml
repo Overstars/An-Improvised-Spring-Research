@@ -8,9 +8,9 @@
     <!--查询语句-->
     <!--id对应的namespace中的方法名，resultType是Sql语句执行的返回值-->
     <!--查询所用用户-->
-    <select id="getUserList" resultType="com.example.demo.User">
+    <select id="getVisitLog" resultType="com.straycat.data.VisitLog">
         select *
-        from idea.user
+        from straycat.kiriya_schema.straycat_visit_log
     </select>
 
 </mapper>

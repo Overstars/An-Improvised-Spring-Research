@@ -73,7 +73,7 @@ sourceSets {
 ### JVM参数
 
 ```
--Dspring.profiles.active=main -Dserver.port=8081 -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+HeapDumpOnOutOfMemoryError
+-Dspring.profiles.active=prd -Dserver.port=9003 -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+HeapDumpOnOutOfMemoryError
 ```
 
 
