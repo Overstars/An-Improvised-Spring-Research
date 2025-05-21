@@ -22,6 +22,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -121,8 +123,13 @@ public class ImageController {
     @GetMapping("/arts/**")
     public ResponseEntity<Resource> getArtsImages(HttpServletRequest request) {
         // 获取完整请求路径[3](@ref)
-        String requestPath = request.getRequestURI().split("/arts/")[1];
-        return handleImageRequest(requestPath, artsBasePath);
+        try {
+            String encodedPath = request.getRequestURI().split("/arts/")[1];
+            String decodedPath = URLDecoder.decode(encodedPath, StandardCharsets.UTF_8);
+            return handleImageRequest(decodedPath, artsBasePath);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
     @GetMapping("/arts/{filename:.+}")
     public ResponseEntity<Resource> getArtsImages(@PathVariable String filename) {
