@@ -11,11 +11,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -23,7 +26,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 import static org.iq80.leveldb.impl.Iq80DBFactory.bytes;
 
@@ -39,6 +45,9 @@ public class ImageController {
 
     @Value("${image.storage.path}")
     private String imageStoragePath;
+
+    @Value("${image.arts.path}") // 新增配置项
+    private String artsBasePath;
 
     @Value("${network.domain}")
     private String networkDomain;
@@ -109,27 +118,44 @@ public class ImageController {
         return ResponseEntity.ok(imageUrl);
     }
 
-    // 通过 Spring Boot 服务返回图片
-    @GetMapping("/images/{filename:.+}")
-    public ResponseEntity<Resource> serveImage(@PathVariable String filename) {
+    @GetMapping("/arts/**")
+    public ResponseEntity<Resource> getArtsImages(HttpServletRequest request) {
+        // 获取完整请求路径[3](@ref)
+        String requestPath = request.getRequestURI().split("/arts/")[1];
+        return handleImageRequest(requestPath, artsBasePath);
+    }
+    @GetMapping("/arts/{filename:.+}")
+    public ResponseEntity<Resource> getArtsImages(@PathVariable String filename) {
+        return handleImageRequest(filename, artsBasePath);
+    }
+    private ResponseEntity<Resource> handleImageRequest(String filename, String basePath) {
         try {
-            Path filePath = Paths.get(imageStoragePath).resolve(filename).normalize();
+            Path base = Paths.get(basePath).normalize();
+            Path targetPath = base.resolve(filename).normalize();
+            // 防止路径遍历攻击[3,7](@ref)
+            if (!targetPath.startsWith(base)) {
+                logger.warn("非法路径访问: {}", filename);
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            }
+
+            Path filePath = Paths.get(basePath).resolve(filename).normalize();
             Resource resource = new UrlResource(filePath.toUri());
 
-            if (resource.exists() || resource.isReadable()) {
-                // 动态设置 Content-Type（根据文件扩展名）
+            if (resource.exists() && resource.isReadable()) {
                 String contentType = determineContentType(filename);
                 return ResponseEntity.ok()
                         .contentType(MediaType.parseMediaType(contentType))
                         .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + resource.getFilename() + "\"")
                         .body(resource);
-            } else {
-                return ResponseEntity.notFound().build();
             }
+            return ResponseEntity.notFound().build();
         } catch (MalformedURLException e) {
+            logger.error("路径解析失败: {}", e.getMessage());
             return ResponseEntity.internalServerError().build();
         }
     }
+
+
 
     // 根据文件名判断 Content-Type
     private String determineContentType(String filename) {
@@ -142,6 +168,8 @@ public class ImageController {
                 return "image/png";
             case "gif":
                 return "image/gif";
+            case "webp":
+                return "image/webp";
             default:
                 return "application/octet-stream";
         }

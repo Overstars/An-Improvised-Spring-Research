@@ -27,7 +27,7 @@ public class LogController {
         this.request = request;
     }
     /**
-     * @description: 
+     * @description:  记录访问日志
      * @param params: 
      * @return: org.springframework.http.ResponseEntity<?>
      * @author: Overstars
@@ -54,7 +54,7 @@ public class LogController {
         return ResponseEntity.ok().build();
     }
     /**
-     * @description: 
+     * @description:  查询访问日志
      * @param start: 
      * @param end: 
      * @return: org.springframework.http.ResponseEntity<java.util.List < com.straycat.data.VisitLog>>
