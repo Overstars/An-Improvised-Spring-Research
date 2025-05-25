@@ -122,7 +122,7 @@ public class ImageController {
 
     @GetMapping("/arts/**")
     public ResponseEntity<Resource> getArtsImages(HttpServletRequest request) {
-        // 获取完整请求路径[3](@ref)
+        // 获取完整请求路径
         try {
             String encodedPath = request.getRequestURI().split("/arts/")[1];
             String decodedPath = URLDecoder.decode(encodedPath, StandardCharsets.UTF_8);
@@ -131,15 +131,15 @@ public class ImageController {
             return ResponseEntity.notFound().build();
         }
     }
-    @GetMapping("/arts/{filename:.+}")
-    public ResponseEntity<Resource> getArtsImages(@PathVariable String filename) {
-        return handleImageRequest(filename, artsBasePath);
+    @GetMapping("/images/{filename:.+}")
+    public ResponseEntity<Resource> serveImage(@PathVariable String filename) {
+        return handleImageRequest(filename, imageStoragePath);
     }
     private ResponseEntity<Resource> handleImageRequest(String filename, String basePath) {
         try {
             Path base = Paths.get(basePath).normalize();
             Path targetPath = base.resolve(filename).normalize();
-            // 防止路径遍历攻击[3,7](@ref)
+            // 防止路径遍历攻击
             if (!targetPath.startsWith(base)) {
                 logger.warn("非法路径访问: {}", filename);
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
