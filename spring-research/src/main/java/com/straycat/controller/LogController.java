@@ -36,18 +36,22 @@ public class LogController {
     @PostMapping("/logs/visit")
     public ResponseEntity<?> logVisit (
         @RequestAttribute("traceNo") String traceNo,  // 直接获取属性值
-        @RequestParam MultiValueMap<String, String> params
+        @RequestParam MultiValueMap<String, String> params,
+        HttpServletRequest request  // 获取请求头
     ) {
         VisitLog log = new VisitLog();
         logger.info("RequestParam params = {}", params);
 //        log.setId(UUID.randomUUID().toString());
         log.setId(traceNo);
         log.setIp(getClientIp(request));
+        // 从请求参数中获取数据
         log.setUrl(params.getFirst("url"));
-        log.setReferrer(params.getFirst("referrer"));
-        log.setUa(params.getFirst("ua"));
         log.setScreen(params.getFirst("screen"));
-        log.setLang(params.getFirst("lang"));
+
+        // 从HTTP请求头中获取数据
+        log.setReferrer(request.getHeader("Referer"));  // 引用来源
+        log.setUa(request.getHeader("User-Agent"));     // 用户代理信息
+        log.setLang(request.getHeader("Accept-Language")); // 语言偏好
 
         logger.info("VisitLog : {}", log);
         storage.storeLog(log);
