@@ -25,13 +25,11 @@ import java.net.MalformedURLException;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
-import java.util.stream.Stream;
 
 import static org.iq80.leveldb.impl.Iq80DBFactory.bytes;
 
@@ -126,27 +124,61 @@ public class ImageController {
         try {
             String encodedPath = request.getRequestURI().split("/arts/")[1];
             String decodedPath = URLDecoder.decode(encodedPath, StandardCharsets.UTF_8);
-            return handleImageRequest(decodedPath, artsBasePath);
+            return handleImageRequest(decodedPath, artsBasePath, Integer.MAX_VALUE);
         } catch (ArrayIndexOutOfBoundsException e) {
             return ResponseEntity.notFound().build();
         }
     }
-    @GetMapping("/images/{filename:.+}")
-    public ResponseEntity<Resource> serveImage(@PathVariable String filename) {
-        return handleImageRequest(filename, imageStoragePath);
-    }
-    private ResponseEntity<Resource> handleImageRequest(String filename, String basePath) {
+    @GetMapping("/images/**")
+    public ResponseEntity<Resource> serveImage(HttpServletRequest request) {
         try {
-            Path base = Paths.get(basePath).normalize();
-            Path targetPath = base.resolve(filename).normalize();
-            // 防止路径遍历攻击
-            if (!targetPath.startsWith(base)) {
-                logger.warn("非法路径访问: {}", filename);
+            String encodedPath = request.getRequestURI().split("/images/")[1];
+            String decodedPath = URLDecoder.decode(encodedPath, StandardCharsets.UTF_8);
+            return handleImageRequest(decodedPath, imageStoragePath, 2);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    private ResponseEntity<Resource> handleImageRequest(String requestedPath, String basePath, int maxDepth) {
+        try {
+            String normalizedRequestPath = requestedPath.replace('\\', '/').trim();
+            if (normalizedRequestPath.isEmpty() || normalizedRequestPath.startsWith("/")) {
+                logger.warn("非法路径访问: {}", requestedPath);
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
             }
 
-            Path filePath = Paths.get(basePath).resolve(filename).normalize();
-            Resource resource = new UrlResource(filePath.toUri());
+            Path relativePath = Paths.get(normalizedRequestPath).normalize();
+            if (relativePath.isAbsolute() || relativePath.startsWith("..") || relativePath.getNameCount() == 0 || relativePath.getNameCount() > maxDepth) {
+                logger.warn("非法路径访问: {}", requestedPath);
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            }
+
+            String filename = relativePath.getFileName().toString();
+            if (!isAllowedImageExtension(filename)) {
+                logger.warn("非法文件类型访问: {}", requestedPath);
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            }
+
+            Path base = Paths.get(basePath).toAbsolutePath().normalize();
+            Path targetPath = base.resolve(relativePath).normalize();
+            // 防止路径遍历攻击
+            if (!targetPath.startsWith(base)) {
+                logger.warn("非法路径访问: {}", requestedPath);
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            }
+
+            if (!Files.exists(targetPath) || !Files.isRegularFile(targetPath, LinkOption.NOFOLLOW_LINKS)) {
+                return ResponseEntity.notFound().build();
+            }
+
+            Path baseRealPath = base.toRealPath();
+            Path targetRealPath = targetPath.toRealPath();
+            if (!targetRealPath.startsWith(baseRealPath)) {
+                logger.warn("检测到符号链接越权访问: {}", requestedPath);
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
+            }
+
+            Resource resource = new UrlResource(targetRealPath.toUri());
 
             if (resource.exists() && resource.isReadable()) {
                 String contentType = determineContentType(filename);
@@ -156,7 +188,7 @@ public class ImageController {
                         .body(resource);
             }
             return ResponseEntity.notFound().build();
-        } catch (MalformedURLException e) {
+        } catch (IOException e) {
             logger.error("路径解析失败: {}", e.getMessage());
             return ResponseEntity.internalServerError().build();
         }
@@ -180,5 +212,19 @@ public class ImageController {
             default:
                 return "application/octet-stream";
         }
+    }
+
+    private boolean isAllowedImageExtension(String filename) {
+        int dotIndex = filename.lastIndexOf('.');
+        if (dotIndex <= 0 || dotIndex == filename.length() - 1) {
+            return false;
+        }
+
+        String extension = filename.substring(dotIndex + 1).toLowerCase();
+        return "jpg".equals(extension)
+                || "jpeg".equals(extension)
+                || "png".equals(extension)
+                || "gif".equals(extension)
+                || "webp".equals(extension);
     }
 }

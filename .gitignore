@@ -3,3 +3,16 @@
 /.idea
 spring-research/leveldb-demo
 levelDbData
+spring-research/build/
+spring-research/.gradle/
+
+# runtime data (root)
+image-db/
+visitLog-db/
+uploaded-images/
+
+# runtime data (module)
+spring-research/image-db/
+spring-research/visitLog-db/
+spring-research/uploaded-images/
+spring-research/levelDbData/
